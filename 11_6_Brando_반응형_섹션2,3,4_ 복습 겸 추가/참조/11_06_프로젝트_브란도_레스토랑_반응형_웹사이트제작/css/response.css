@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+/* 미디어쿼리 */
+/* 화면너비가 990픽셀 이하이면 사이드메뉴 첫번째 안보이게 하라 */
+@media all and (min-width:1200px) and (max-width:1600px){
+    #main  #section01 .hungry img {width:75%;}    
+}
+@media all and (max-width:1200px){
+    #header .wrap .gap .right #asid div span:nth-child(1) {display:none;}    
+    #main  #section01 .hungry img {width:70%;}  
+    
+}
+@media all and (max-width:1200px) and (orientation:landscape){   
+    #main  #section01 .hungry img {width:50%;}    
+}
+@media all and (max-width:1200px) and (orientation:portrait){   
+    #main  #section01 .hungry img {width:70%;}    
+}
+
+@media all and (max-width:1170px){
+    #main  .section234 .wrap .gap {margin:0;}
+}
+
+@media all and (max-width:990px){
+    #header .wrap .gap .left #nav   {display:none}
+    #header .wrap .gap .left .logo i {display:none;}
+    #header .wrap .gap .right #asid {display:none}
+    #header .wrap .gap .right .mobile {display:block;}  
+    
+    #main  #section01,
+    #main  #section02,
+    #main  #section03,
+    #main  #section04 {background-attachment:scroll;}
+
+    #main  #section01 .hungry img {width:60%;}
+
+}
+/* 해상도가 990px 이하이고 핸드폰 방향이 가로방향(landscape)인경우 */
+@media all and (max-width:990px) and (orientation:landscape){
+    #main  #section01 .hungry img {width:40%;}
+}
+/* 해상도가 990px 이하이고 핸드폰 방향이 세로방향(portrait)인경우 */
+@media all and (max-width:990px) and (orientation:portrait){
+    #main  #section01 .hungry img {width:65%;}
+}

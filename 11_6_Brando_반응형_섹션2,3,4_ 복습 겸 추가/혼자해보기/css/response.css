@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+
+@media all and (max-width:1200px){
+    #header .wrap .gap .right #aside div span:nth-child(1) {display:none;}
+    #main #section01 .hungry img {width:65%;}
+}
+@media all and (max-width:1200px) and (orientation:landscape){
+    #main #section01 .hungry img {width:50%;}
+}
+@media all and (max-width:990px){
+    #header .wrap .gap .left #nav      {display:none;}
+    #header .wrap .gap .left .logo a i {display:none;}
+    #header .wrap .gap .right #aside   {display:none;}
+    #header .wrap .gap .right .mobile {display:inline-block}
+
+    #main #section01,
+    #main #section02,
+    #main #section03,
+    #main #section04 {background-attachment:scroll;}
+
+    #main #section01 .hungry img {width:60%;}
+}
+@media all and (max-width:990px) and (orientation:landscape){
+    #main #section01 .hungry img {width:50%;}
+}

@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+#header {z-index:3;position:fixed;top:0;left:0;width:100%;height:75px;border-bottom:1px solid rgba(255,255,255, 0.1);background:transparent;}
+#header .wrap {width:100%;max-width:1170px;margin:0 auto;}
+
+#main   {z-index:2;position:relative;width:100%;}
+#main  #section01 {z-index:1;position:relative;width:100%;height:969px;background:url(../img/slider-img4.jpg) no-repeat 50% 0 fixed;background-size:cover;} /* 좌우는 50 위아래는 0 */
+#main  #section01:after {z-index:2;content:'';display:block;position:absolute;top:0;left:0;width:100%;height:100%;background:#252525;opacity:.6;}
+#main  #section01 .hungry {z-index:3;position:absolute;display:inline-block;top:382px;width:100%;text-align:center;}
+#main  #section01 .hungry img {width:100%;max-width:542px;}
+#main  #section01 .arrow-down {z-index:3;position:absolute;bottom:50px;left:50%;margin-left:-16px;display:inline-block;width:32px;height:32px;}
+#main  #section01 .arrow-down img {width:100%;max-width:32px;}
+
+#main  #section02 {width:100%;height:969px;background:url(../img/restaurant-img1.jpg) no-repeat 50% 0 fixed;background-size:cover;} 
+#main  #section03 {width:100%;height:969px;background:url(../img/restaurant-img2.jpg) no-repeat 50% 0 fixed;background-size:cover;} 
+#main  #section04 {width:100%;height:969px;background:url(../img/restaurant-img3.jpg) no-repeat 50% 0 fixed;background-size:cover;} 
+
+#footer {z-index:1;position:relative;width:100%;}
