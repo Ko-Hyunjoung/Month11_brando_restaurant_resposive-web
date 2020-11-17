@@ -298,35 +298,7 @@
         },
 
         section09GalleryFn: function(){
-            var imgR = 0.75;
-            var winW = $(window).innerWidth();
-            var imgW = winW / 4;
-            var imgH = imgW * imgR;
-            var imgL = 0; //이미지 너비따라 바뀌고
-            var imgT = 0; //이미지 높이따라 바뀌어요
 
-                function resizeFn(){
-                    imgR = 0.75;
-                    winW = $(window).innerWidth();
-                    imgW = winW / 4;
-                    imgH = imgW * imgR;
-
-                    setTimeout(resizeFn,100);
-
-                    $('.gallery').css({ height:imgH*2 });  //갤러리 전체박스 높이 설정
-                    $('.gallery li').eq(0).css({ top:(imgH*0), left:(imgW*0), width:imgW, height:imgH });
-                    $('.gallery li').eq(1).css({ top:(imgH*0), left:(imgW*1), width:imgW, height:imgH });
-                    $('.gallery li').eq(2).css({ top:(imgH*0), left:(imgW*2), width:imgW, height:imgH });
-                    $('.gallery li').eq(3).css({ top:(imgH*0), left:(imgW*3), width:imgW, height:imgH });
-                    $('.gallery li').eq(4).css({ top:(imgH*1), left:(imgW*0), width:imgW, height:imgH });
-                    $('.gallery li').eq(5).css({ top:(imgH*1), left:(imgW*1), width:imgW, height:imgH });
-                    $('.gallery li').eq(6).css({ top:(imgH*1), left:(imgW*2), width:imgW, height:imgH });
-                    $('.gallery li').eq(7).css({ top:(imgH*1), left:(imgW*3), width:imgW, height:imgH });
-                }
-
-                $(window).resize(function(){
-                    resizeFn();
-                })
         },
         section10Fn: function(){
 
