@@ -408,6 +408,9 @@
                     //버튼이벤트
                     $('.gallery-btn').on({
                         click: function(){
+                            $('.gallery').removeClass('addZoom');
+                            $('.gallery').addClass('addZoom');
+
                             $('.gallery li').eq(0).hide();
                             $('.gallery li').eq(2).hide();
 
