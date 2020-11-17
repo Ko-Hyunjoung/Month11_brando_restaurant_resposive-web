@@ -342,7 +342,7 @@
     
                             // $('.gallery li').eq(0).css({top:(imgH*줄번호), left:(imgW*칸번호), width:imgW, height:imgH });
                             //칸수 4칸인 경우 1200 초과인경우
-                            $('.gallery').css({height:imgH*rows}); //이미지높이 * 줄수
+                            $('.gallery').css({height:imgH*rows}).addClass('addZoom'); //이미지높이 * 줄수
                             
                             var cnt=-1;
 
@@ -404,6 +404,25 @@
                     $(window).resize(function(){
                         galleryFn();
                     });
+
+                    //버튼이벤트
+                    $('.gallery-btn').on({
+                        click: function(){
+                            $('.gallery li').eq(0).hide();
+                            $('.gallery li').eq(2).hide();
+
+                            $('.gallery li').eq(1).show().stop().animate({top:(imgH*0), left:(imgW*0), width:imgW, height:imgH },300);
+                            $('.gallery li').eq(3).show().stop().animate({top:(imgH*0), left:(imgW*1), width:imgW, height:imgH },300);
+                            $('.gallery li').eq(4).show().stop().animate({top:(imgH*0), left:(imgW*2), width:imgW, height:imgH },300);
+                            $('.gallery li').eq(5).show().stop().animate({top:(imgH*0), left:(imgW*3), width:imgW, height:imgH },300);
+                            $('.gallery li').eq(6).show().stop().animate({top:(imgH*1), left:(imgW*0), width:imgW, height:imgH },300);
+                            $('.gallery li').eq(7).show().stop().animate({top:(imgH*1), left:(imgW*1), width:imgW, height:imgH },300);
+
+                        }
+                    });
+
+
+
         },
         section10Fn: function(){
 
