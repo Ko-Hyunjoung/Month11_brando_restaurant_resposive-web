@@ -406,10 +406,10 @@
                     });
 
                     //버튼이벤트
-                    $('.gallery-btn').on({
+                    $('.gallery-btn').eq(1).on({
                         click: function(){
                             $('.gallery').removeClass('addZoom');
-                            $('.gallery').addClass('addZoom');
+
 
                             $('.gallery li').eq(0).hide();
                             $('.gallery li').eq(2).hide();
@@ -421,6 +421,7 @@
                             $('.gallery li').eq(6).show().stop().animate({top:(imgH*1), left:(imgW*0), width:imgW, height:imgH },300);
                             $('.gallery li').eq(7).show().stop().animate({top:(imgH*1), left:(imgW*1), width:imgW, height:imgH },300);
 
+                            $('.gallery').addClass('addZoom');
                         }
                     });
 
