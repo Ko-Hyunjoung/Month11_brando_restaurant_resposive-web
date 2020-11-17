@@ -346,14 +346,18 @@
                             
                             var cnt=-1;
 
-                            for(i=0;i<2;i++){   // 0~1 
-                                for(j=0;j<cols;j++){ //0~3
-                                    cnt++;  // 0~7
+                            for(var i=0;i<rows;i++){   // 0~2
+                                for(var j=0;j<cols;j++){ //0~2
+                                    cnt++;  // 0~8
+                                    if(cnt>7){
+                                        break
+                                    }
                                     console.log(cnt,i,j);
+                                    $('.gallery li').eq(cnt).stop().animate({top:(imgH*i), left:(imgW*j), width:imgW, height:imgH },300);
                                 }
                             }
 
-
+/*
                         if(cols==4){
                             $('.gallery li').eq(0).stop().animate({top:(imgH*0), left:(imgW*0), width:imgW, height:imgH },300);
                             $('.gallery li').eq(1).stop().animate({top:(imgH*0), left:(imgW*1), width:imgW, height:imgH },300);
@@ -394,6 +398,7 @@
                             $('.gallery li').eq(6).stop().animate({top:(imgH*6), left:(imgW*0), width:imgW, height:imgH },300);
                             $('.gallery li').eq(7).stop().animate({top:(imgH*7), left:(imgW*0), width:imgW, height:imgH },300);
                         }
+*/
                     }
 
                     $(window).resize(function(){
