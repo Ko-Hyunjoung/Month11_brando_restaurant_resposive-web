@@ -298,7 +298,105 @@
         },
 
         section09GalleryFn: function(){
+                            var hRate = 0.75;
+                            var cols = 4;
+                            var winW = $(window).innerWidth();
+                            var n = $('.gallery li').length;
+                            var rows = Math.ceil(8/cols);
+                            var imgW = winW / cols;
+                            var imgH = imgW * hRate;
 
+                            setTimeout(galleryFn,100);
+                
+                            function galleryFn(){
+                                winW = $(window).innerWidth();
+                                cols = 4;
+                                if( winW > 1200 ){
+                                    cols = 4;
+                                }
+                                else if( winW <= 1200 && winW > 980 ){
+                                    cols = 3;
+                                }
+                                else if( winW <= 980 && winW > 760 ){
+                                    cols = 2;
+                                }
+                                else if( winW <= 760 && winW >= 0 ){
+                                    cols = 1;
+                                }
+                
+                                n = $('.gallery li').length;
+                                rows = Math.ceil(8/cols);
+                                imgW = winW / cols;
+                                imgH = imgW * hRate;
+                    
+                                console.log('갤러리 갯수', n)
+                                console.log('hRate', hRate)
+                                console.log('cols', cols)
+                                console.log('rows', rows)
+                                console.log('winW', winW)
+                                console.log('imgW', imgW)
+                                console.log('imgH', imgH)
+
+                                var cnt = -1;
+                                for(var i=0; i<rows ; i++){
+                                    for(var j=0; j<cols ; j++ ){
+                                        cnt++;
+                                        if(cnt>7){
+                                            break
+                                        }
+                                        console.log(cnt,i,j);
+                                        $('.gallery li').eq(cnt).stop().animate({top:(imgH*i), left:(imgW*j), width:imgW, height:imgH},300);
+
+                                    }
+                                }
+
+
+                                $('.gallery').css({height:imgH*rows});
+                                if(cols==4){
+                                    $('.gallery li').eq(0).stop().animate({top:(imgH*0), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(1).stop().animate({top:(imgH*0), left:(imgW*1), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(2).stop().animate({top:(imgH*0), left:(imgW*2), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(3).stop().animate({top:(imgH*0), left:(imgW*3), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(4).stop().animate({top:(imgH*1), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(5).stop().animate({top:(imgH*1), left:(imgW*1), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(6).stop().animate({top:(imgH*1), left:(imgW*2), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(7).stop().animate({top:(imgH*1), left:(imgW*3), width:imgW, height:imgH},300);
+                                }
+                                else if(cols==3){
+                                    $('.gallery li').eq(0).stop().animate({top:(imgH*0), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(1).stop().animate({top:(imgH*0), left:(imgW*1), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(2).stop().animate({top:(imgH*0), left:(imgW*2), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(3).stop().animate({top:(imgH*1), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(4).stop().animate({top:(imgH*1), left:(imgW*1), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(5).stop().animate({top:(imgH*1), left:(imgW*2), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(6).stop().animate({top:(imgH*2), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(7).stop().animate({top:(imgH*2), left:(imgW*1), width:imgW, height:imgH},300);
+                                }
+                                else if(cols==2){
+                                    $('.gallery li').eq(0).stop().animate({top:(imgH*0), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(1).stop().animate({top:(imgH*0), left:(imgW*1), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(2).stop().animate({top:(imgH*1), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(3).stop().animate({top:(imgH*1), left:(imgW*1), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(4).stop().animate({top:(imgH*2), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(5).stop().animate({top:(imgH*2), left:(imgW*1), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(6).stop().animate({top:(imgH*3), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(7).stop().animate({top:(imgH*3), left:(imgW*1), width:imgW, height:imgH},300);
+                                }
+                                else if(cols==1){
+                                    $('.gallery li').eq(0).stop().animate({top:(imgH*0), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(1).stop().animate({top:(imgH*1), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(2).stop().animate({top:(imgH*2), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(3).stop().animate({top:(imgH*3), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(4).stop().animate({top:(imgH*4), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(5).stop().animate({top:(imgH*5), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(6).stop().animate({top:(imgH*6), left:(imgW*0), width:imgW, height:imgH},300);
+                                    $('.gallery li').eq(7).stop().animate({top:(imgH*7), left:(imgW*0), width:imgW, height:imgH},300);
+                                }
+                            }
+                
+                            $(window).resize(function(){
+                                galleryFn();
+                            });
         },
         section10Fn: function(){
 

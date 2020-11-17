@@ -297,7 +297,7 @@
                 });
         },
 
-        section09GalleryFn: function(){
+        section09GalleryFn(){
             var imgR = 0.75;
             var winW = $(window).innerWidth();
             var imgW = winW / 4;
