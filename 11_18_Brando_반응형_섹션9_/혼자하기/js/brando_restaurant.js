@@ -298,105 +298,91 @@
         },
 
         section09GalleryFn: function(){
-                            var hRate = 0.75;
-                            var cols = 4;
-                            var winW = $(window).innerWidth();
-                            var n = $('.gallery li').length;
-                            var rows = Math.ceil(8/cols);
-                            var imgW = winW / cols;
-                            var imgH = imgW * hRate;
+                    var hRate = 0.75; // 600/800;  이미지높이/이미지너비  초기 고정된 값 (상수값:const)
+                    var winW = $(window).innerWidth();
 
-                            setTimeout(galleryFn,100);
-                
-                            function galleryFn(){
-                                winW = $(window).innerWidth();
-                                cols = 4;
-                                if( winW > 1200 ){
-                                    cols = 4;
-                                }
-                                else if( winW <= 1200 && winW > 980 ){
-                                    cols = 3;
-                                }
-                                else if( winW <= 980 && winW > 760 ){
-                                    cols = 2;
-                                }
-                                else if( winW <= 760 && winW >= 0 ){
-                                    cols = 1;
-                                }
-                
-                                n = $('.gallery li').length;
-                                rows = Math.ceil(8/cols);
-                                imgW = winW / cols;
-                                imgH = imgW * hRate;
-                    
-                                console.log('갤러리 갯수', n)
-                                console.log('hRate', hRate)
-                                console.log('cols', cols)
-                                console.log('rows', rows)
-                                console.log('winW', winW)
-                                console.log('imgW', imgW)
-                                console.log('imgH', imgH)
-
-                                var cnt = -1;
-                                for(var i=0; i<rows ; i++){
-                                    for(var j=0; j<cols ; j++ ){
-                                        cnt++;
-                                        if(cnt>7){
-                                            break
-                                        }
-                                        console.log(cnt,i,j);
-                                        $('.gallery li').eq(cnt).stop().animate({top:(imgH*i), left:(imgW*j), width:imgW, height:imgH},300);
-
-                                    }
-                                }
+                    var cols = 4; //칸수 해상도별 변수 사용 예정
+                    var n = $('.gallery li').length; //8 갯수 세어주는 length
+                    var rows = Math.ceil(n/cols); // 줄수 = 올림 (갤러리갯수 / 칸수) 
+                  
+                    var imgW = winW / cols;  // 창너비/칸수
+                    var imgH = imgW * hRate; // 이미지너비*이미지높이비율값
+                    var hide = [];
+                    var show = [0,1,2,3,4,5,6,7];
 
 
-                                $('.gallery').css({height:imgH*rows});
-                                if(cols==4){
-                                    $('.gallery li').eq(0).stop().animate({top:(imgH*0), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(1).stop().animate({top:(imgH*0), left:(imgW*1), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(2).stop().animate({top:(imgH*0), left:(imgW*2), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(3).stop().animate({top:(imgH*0), left:(imgW*3), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(4).stop().animate({top:(imgH*1), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(5).stop().animate({top:(imgH*1), left:(imgW*1), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(6).stop().animate({top:(imgH*1), left:(imgW*2), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(7).stop().animate({top:(imgH*1), left:(imgW*3), width:imgW, height:imgH},300);
-                                }
-                                else if(cols==3){
-                                    $('.gallery li').eq(0).stop().animate({top:(imgH*0), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(1).stop().animate({top:(imgH*0), left:(imgW*1), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(2).stop().animate({top:(imgH*0), left:(imgW*2), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(3).stop().animate({top:(imgH*1), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(4).stop().animate({top:(imgH*1), left:(imgW*1), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(5).stop().animate({top:(imgH*1), left:(imgW*2), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(6).stop().animate({top:(imgH*2), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(7).stop().animate({top:(imgH*2), left:(imgW*1), width:imgW, height:imgH},300);
-                                }
-                                else if(cols==2){
-                                    $('.gallery li').eq(0).stop().animate({top:(imgH*0), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(1).stop().animate({top:(imgH*0), left:(imgW*1), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(2).stop().animate({top:(imgH*1), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(3).stop().animate({top:(imgH*1), left:(imgW*1), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(4).stop().animate({top:(imgH*2), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(5).stop().animate({top:(imgH*2), left:(imgW*1), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(6).stop().animate({top:(imgH*3), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(7).stop().animate({top:(imgH*3), left:(imgW*1), width:imgW, height:imgH},300);
-                                }
-                                else if(cols==1){
-                                    $('.gallery li').eq(0).stop().animate({top:(imgH*0), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(1).stop().animate({top:(imgH*1), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(2).stop().animate({top:(imgH*2), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(3).stop().animate({top:(imgH*3), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(4).stop().animate({top:(imgH*4), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(5).stop().animate({top:(imgH*5), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(6).stop().animate({top:(imgH*6), left:(imgW*0), width:imgW, height:imgH},300);
-                                    $('.gallery li').eq(7).stop().animate({top:(imgH*7), left:(imgW*0), width:imgW, height:imgH},300);
+                    setTimeout(galleryFn,100) //부팅하고 로딩시에 무조건 실행해라 0.1초후에
+
+                    function galleryFn(){
+                        //Number('01')   //1  숫자로 변형시켜주는 아이들
+                        //parseInt('01') //1
+
+                        // rows = Math.round(8/cols); // 줄수 = 반올림 (갤러리갯수 / 칸수) 
+                        // rows = Math.floor(8/cols); // 줄수 = 내림 (갤러리갯수 / 칸수) 
+                        winW = $(window).innerWidth();  // 변수가 필요할 때는 반드시 필요한 변수가 위에 있어야해요
+                        if( winW > 1200)cols = 4;
+                        else if( winW <= 1200 && winW > 980 )cols = 3;
+                        else if( winW <= 980 && winW > 760)cols = 2;
+                        else if( winW <= 760 && winW >= 0)cols = 1;
+
+                        // n = $('.gallery li').length; 8 갯수 세어주는 length
+                        n = show.length; 
+                        rows = Math.ceil(n/cols); // 줄수 = 올림 (갤러리갯수 / 칸수) 
+                      
+                        
+                        imgW = winW / cols;  // 창너비/칸수
+                        imgH = imgW * hRate; // 이미지너비*이미지높이비율값
+
+                        
+                            $('.gallery').addClass('addZoom'); 
+                            $('.gallery').css({height:imgH*rows});
+                            
+                            
+                            //갤러리 숨김
+                            for(var i=0; i<hide.length; i++){
+                                $('.gallery li').eq(hide[i]).hide();
+                            }
+
+                            //갤러리 보이기
+                            var cnt=-1;
+                            for(var i=0;i<rows;i++){   // 0~2
+                                for(var j=0;j<cols;j++){ //0~2
+                                    cnt++;  // 0~8
+                                    if(cnt>show.length)break
+                                  
+                                    $('.gallery li').eq(show[cnt]).show().stop().animate({top:(imgH*i), left:(imgW*j), width:imgW, height:imgH },300);
                                 }
                             }
-                
-                            $(window).resize(function(){
-                                galleryFn();
-                            });
+                            $('.gallery').addClass('addZoom');
+
+                    }
+
+                    $(window).resize(function(){
+                        galleryFn();
+                    });
+
+                    //버튼이벤트
+                    $('.gallery-btn').eq(1).on({
+                        click: function(){
+                            $('.gallery').removeClass('addZoom');
+
+
+                            $('.gallery li').eq(0).hide();
+                            $('.gallery li').eq(2).hide();
+
+                            $('.gallery li').eq(1).show().stop().animate({top:(imgH*0), left:(imgW*0), width:imgW, height:imgH },300);
+                            $('.gallery li').eq(3).show().stop().animate({top:(imgH*0), left:(imgW*1), width:imgW, height:imgH },300);
+                            $('.gallery li').eq(4).show().stop().animate({top:(imgH*0), left:(imgW*2), width:imgW, height:imgH },300);
+                            $('.gallery li').eq(5).show().stop().animate({top:(imgH*0), left:(imgW*3), width:imgW, height:imgH },300);
+                            $('.gallery li').eq(6).show().stop().animate({top:(imgH*1), left:(imgW*0), width:imgW, height:imgH },300);
+                            $('.gallery li').eq(7).show().stop().animate({top:(imgH*1), left:(imgW*1), width:imgW, height:imgH },300);
+
+                            $('.gallery').addClass('addZoom');
+                        }
+                    });
+
+
+
         },
         section10Fn: function(){
 
