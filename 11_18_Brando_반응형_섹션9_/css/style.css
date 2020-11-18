@@ -104,7 +104,7 @@
 
 #main  #section09 .wrap .gap .container .title {width:100%;text-align:center;}
 #main  #section09 .wrap .gap .container .title h2 {font-size:28px;font-family:'Montserrat';font-weight:700;}
-#main  #section09 .wrap .gap .container .title h3 {width:100%;}
+#main  #section09 .wrap .gap .container .title h3 {width:100%;padding-top:20px;}
 #main  #section09 .wrap .gap .container .title h3 img {width:auto;}
 
 #main  #section09 .wrap .gap .container .content {padding-top:70px;}
