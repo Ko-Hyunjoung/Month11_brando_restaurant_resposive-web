@@ -348,9 +348,11 @@
                             for(var i=0;i<rows;i++){   // 0~2
                                 for(var j=0;j<cols;j++){ //0~2
                                     cnt++;  // 0~8
-                                    if(cnt>show.length)break
-                                  
+                                    if(cnt>show.length-1)
+                                    break;
+                                    $('.gallery li').removeClass('addZoom2');
                                     $('.gallery li').eq(show[cnt]).show().stop().animate({top:(imgH*i), left:(imgW*j), width:imgW, height:imgH },300);
+                                    $('.gallery li').addClass('addZoom2');
                                 }
                             }
                             $('.gallery').addClass('addZoom');
@@ -362,24 +364,40 @@
                     });
 
                     //버튼이벤트
-                    $('.gallery-btn').eq(1).on({
-                        click: function(){
-                            $('.gallery').removeClass('addZoom');
+                    $('.gallery-btn').each(function(index){
+                        $(this).on({
+                            click: function(){
 
-
-                            $('.gallery li').eq(0).hide();
-                            $('.gallery li').eq(2).hide();
-
-                            $('.gallery li').eq(1).show().stop().animate({top:(imgH*0), left:(imgW*0), width:imgW, height:imgH },300);
-                            $('.gallery li').eq(3).show().stop().animate({top:(imgH*0), left:(imgW*1), width:imgW, height:imgH },300);
-                            $('.gallery li').eq(4).show().stop().animate({top:(imgH*0), left:(imgW*2), width:imgW, height:imgH },300);
-                            $('.gallery li').eq(5).show().stop().animate({top:(imgH*0), left:(imgW*3), width:imgW, height:imgH },300);
-                            $('.gallery li').eq(6).show().stop().animate({top:(imgH*1), left:(imgW*0), width:imgW, height:imgH },300);
-                            $('.gallery li').eq(7).show().stop().animate({top:(imgH*1), left:(imgW*1), width:imgW, height:imgH },300);
-
-                            $('.gallery').addClass('addZoom');
-                        }
+                                $('.gallery-btn').removeClass('addNav');
+                                $(this).addClass('addNav');
+    
+                                switch(index){
+                                    case 0:
+                                        hide = [];
+                                        show = [0,1,2,3,4,5,6,7];
+                                        break;
+                                    case 1:
+                                        hide = [0,2];
+                                        show = [1,3,4,5,6,7];
+                                        break;
+                                    case 2:
+                                        hide = [1,3,4,5];
+                                        show = [0,2,6,7];
+                                        break;
+                                    case 3:
+                                        hide = [0,2,5];
+                                        show = [1,3,4,6,7];
+                                        break;
+                                    default:
+                                        hide = [0,1,3,6];
+                                        show = [2,4,5,7];
+                                }
+    
+                                galleryFn();
+                            }
+                        });
                     });
+
 
 
 

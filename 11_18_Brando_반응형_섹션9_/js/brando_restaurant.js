@@ -241,6 +241,7 @@
                 function resizeFn(){
                     winH = $(window).innerHeight();
                     $('.img-wrap').css({lineHeight:winH + 'px'}); 
+                    
                 }
 
                 $(window).resize(function(){
