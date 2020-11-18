@@ -333,59 +333,93 @@
                             // n = $('.gallery li').length; 목록의 갯수
                             n = show.length; //클릭한 버튼 내용 이미지 갯수
                             rows = Math.ceil(n/cols); // 줄수 = 올림 (갤러리갯수 / 칸수) 
-                        
                             
                             imgW = winW / cols;  // 창너비/칸수
                             imgH = imgW * hRate; // 이미지너비*이미지높이비율값
     
                                 $('.gallery').addClass('addZoom');
                                 $('.gallery').css({height:imgH*rows}); //이미지높이 * 줄수
-                                
-                                
+ 
                                 // 갤러리 숨김 hide();
-                                for(var i=0; i<숨겨진배열길이; i++){
+                                for(var i=0; i<hide.length; i++){
                                     $('.gallery li').eq(hide[i]).hide();
                                 }
-                                
-    
+            
                                 // 갤러리 보이기 show();
                                 var cnt=-1;
                                 for(var i=0;i<rows;i++){   // 0~2
                                     for(var j=0;j<cols;j++){ //0~2
                                         cnt++;  // 0~8
-                                        if(cnt>show.length) //보이는 갯수에 따라서 변경
+                                        if(cnt>show.length-1) //보이는 갯수에 따라서 변경
                                         break;
-                                        $('.gallery li').eq(show[cnt]).show().stop().animate({top:(imgH*i), left:(imgW*j), width:imgW, height:imgH },300);
+                                        $('.gallery li').removeClass('addZoom2');
+                                        $('.gallery li').eq(show[cnt]).show().stop().animate({top:(imgH*i), left:(imgW*j), width:imgW, height:imgH },300, function(){
+                                            $('.gallery li').addClass('addZoom2');
+                                        });
                                     }
                                 }
                                 $('.gallery').addClass('addZoom');
-                        }
+                        } //갤러리 메인 함수 끝
     
                         $(window).resize(function(){
                             galleryFn();
                         });
+
+
     
-                        //버튼이벤트
-                        $('.gallery-btn').eq(1).on({
-                            click: function(){
-                                $('.gallery').removeClass('addZoom');
+                        //갤러리 버튼 이벤트
+                        $('.gallery-btn').each(function(index){
+
+                            $(this).on({
+                                click: function(){
+
+                                    $('.gallery-btn').removeClass('addNav');
+                                    $('this').addClass('addNav');
     
-                                $('.gallery li').eq(0).hide();
-                                $('.gallery li').eq(2).hide();
+                                    switch(index){
+                                        case 0:
+                                            hide = [];
+                                            show = [0,1,2,3,4,5,6,7];
+                                            break;
+                                        case 1:
+                                            hide = [0,2];
+                                            show = [1,3,4,5,6,7];
+                                            break;
+                                        case 2:
+                                            hide = [1,3,4,5];
+                                            show = [0,2,6,7];
+                                            break;
+                                        case 3:
+                                            hide = [0,2,5];
+                                            show = [1,3,4,6,7];
+                                            break;
+                                        default:
+                                            hide = [0,1,3,6];
+                                            show = [2,4,5,7];
+                
+                                    }
+
+                                    // if(index==0){
+
+                                    // }
+                                    // else if(index==1){
+
+                                    // }
+                                    // else if(index==2){
+
+                                    // }
+                                    // else if(index==3){
+
+                                    // }
+                                    // else{
+
+                                    // }
+                            
+                                    galleryFn(); //갤러리 메인함수 호출 실행
     
-                                $('.gallery li').eq(1).show().stop().animate({top:(imgH*0), left:(imgW*0), width:imgW, height:imgH },300);
-                                $('.gallery li').eq(3).show().stop().animate({top:(imgH*0), left:(imgW*1), width:imgW, height:imgH },300);
-                                $('.gallery li').eq(4).show().stop().animate({top:(imgH*0), left:(imgW*2), width:imgW, height:imgH },300);
-                                $('.gallery li').eq(5).show().stop().animate({top:(imgH*0), left:(imgW*3), width:imgW, height:imgH },300);
-                                $('.gallery li').eq(6).show().stop().animate({top:(imgH*1), left:(imgW*0), width:imgW, height:imgH },300);
-                                $('.gallery li').eq(7).show().stop().animate({top:(imgH*1), left:(imgW*1), width:imgW, height:imgH },300);
-    
-                                $('.gallery').addClass('addZoom');
-                            }
+                                }
+                            });
                         });
-
-
-
         },
         section10Fn: function(){
 
